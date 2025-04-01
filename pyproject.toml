@@ -10,4 +10,5 @@ dependencies = [
     "langgraph>=0.3.21",
     "litestar>=2.15.1",
     "pydantic-settings>=2.8.1",
+    "uvicorn>=0.34.0",
 ]
