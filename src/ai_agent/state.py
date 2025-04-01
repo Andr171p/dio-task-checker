@@ -1,6 +1,6 @@
 from typing_extensions import TypedDict
 
-from src.core.entities import Task
+from src.models import Task
 
 
 class State(TypedDict):

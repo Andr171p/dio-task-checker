@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.11"
 dependencies = [
+    "dishka>=1.5.2",
     "langchain>=0.3.21",
     "langchain-gigachat>=0.3.8",
     "langgraph>=0.3.21",

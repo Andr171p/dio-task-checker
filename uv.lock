@@ -157,6 +157,7 @@ name = "diotasks"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "dishka" },
     { name = "langchain" },
     { name = "langchain-gigachat" },
     { name = "langgraph" },
@@ -166,11 +167,21 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "dishka", specifier = ">=1.5.2" },
     { name = "langchain", specifier = ">=0.3.21" },
     { name = "langchain-gigachat", specifier = ">=0.3.8" },
     { name = "langgraph", specifier = ">=0.3.21" },
     { name = "litestar", specifier = ">=2.15.1" },
     { name = "pydantic-settings", specifier = ">=2.8.1" },
+]
+
+[[package]]
+name = "dishka"
+version = "1.5.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/07/41/0918b36dc20db62fb18f0543daffeba624f0c016a08313492c8367df8338/dishka-1.5.2.tar.gz", hash = "sha256:beae47f4450ad8db6fd3e6044a48c81ffea4b164adb1887b5d141494c4d507c8", size = 63474 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c5/6b/08f3b2233f77bbb53deacf11fde09356a859b61177854114d7b19fb50b21/dishka-1.5.2-py3-none-any.whl", hash = "sha256:fbd21fdc8de7f354643b25532d5cf9778b2bbee91887403f638a9bb437690cba", size = 88071 },
 ]
 
 [[package]]

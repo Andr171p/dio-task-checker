@@ -1,6 +1,6 @@
 from langgraph.graph import START, END, StateGraph
 
-from src.core.entities import Task
+from src.models import Task
 from src.ai_agent.state import State
 from src.ai_agent.nodes import RateNode, CommentsNode
 
