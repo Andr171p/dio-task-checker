@@ -9,6 +9,8 @@ dependencies = [
     "langchain-gigachat>=0.3.8",
     "langgraph>=0.3.21",
     "litestar>=2.15.1",
+    "pandas>=2.2.3",
     "pydantic-settings>=2.8.1",
     "uvicorn>=0.34.0",
+    "xlrd>=2.0.1",
 ]
