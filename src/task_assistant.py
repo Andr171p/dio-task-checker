@@ -7,5 +7,5 @@ class TaskAssistant:
         self._ai_agent = agent
 
     async def check_task(self, task: Task) -> CheckedTask:
-        checked_task = await self._ai_agent.generate(task)
-        return CheckedTask.model_validate(checked_task)
+        generated = await self._ai_agent.generate(task)
+        return CheckedTask.model_validate(generated)
