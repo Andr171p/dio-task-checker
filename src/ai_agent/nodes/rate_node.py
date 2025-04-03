@@ -33,7 +33,6 @@ class RateNode(BaseNode):
         task = state["task"]
         chain = self._create_chain()
         response = await chain.ainvoke({
-            "partner": task.partner,
             "subdivision": task.subdivision,
             "description": task.description,
             "hours": task.hours
