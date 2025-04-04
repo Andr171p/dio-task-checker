@@ -3,7 +3,7 @@ from dishka import Provider, provide, Scope
 from langchain_core.language_models import BaseChatModel, LLM
 from langchain_gigachat import GigaChat
 
-from src.ai_agent.agent import Agent
+from src.ai_agent import TaskAIAgent
 from src.ai_agent.nodes import RateNode, CommentsNode
 from src.task_assistant import TaskAssistant
 
@@ -29,9 +29,9 @@ class TaskAssistantProvider(Provider):
         return CommentsNode(model)
 
     @provide(scope=Scope.APP)
-    def get_agent(self, rate_node: RateNode, comments_node: CommentsNode) -> Agent:
-        return Agent(rate_node, comments_node)
+    def get_ai_agent(self, rate_node: RateNode, comments_node: CommentsNode) -> TaskAIAgent:
+        return TaskAIAgent(rate_node, comments_node)
 
     @provide(scope=Scope.APP)
-    def get_task_assistant(self, agent: Agent) -> TaskAssistant:
-        return TaskAssistant(agent)
+    def get_task_assistant(self, ai_agent: TaskAIAgent) -> TaskAssistant:
+        return TaskAssistant(ai_agent)

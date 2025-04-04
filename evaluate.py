@@ -7,7 +7,7 @@ import pandas as pd
 from langchain_gigachat import GigaChat
 
 from src.models import Task
-from src.ai_agent.agent import Agent
+from src.ai_agent.task_ai_agent import Agent
 from src.task_assistant import TaskAssistant
 from src.ai_agent.nodes import RateNode, CommentsNode
 

@@ -25,11 +25,7 @@ class CommentsNode(BaseNode):
         return prompt | self._model | parser
 
     async def execute(self, state: State) -> dict:
-        task = state["task"]
+        task = state.get("task")
         chain = self._create_chain()
-        comments = await chain.ainvoke({
-            "subdivision": task.subdivision,
-            "description": task.description,
-            "hours": task.hours
-        })
+        comments = await chain.ainvoke(task.model_dump())
         return {"comments": comments}

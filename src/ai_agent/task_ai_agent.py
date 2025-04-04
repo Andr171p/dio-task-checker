@@ -5,7 +5,7 @@ from src.ai_agent.state import State
 from src.ai_agent.nodes import RateNode, CommentsNode
 
 
-class Agent:
+class TaskAIAgent:
     def __init__(
             self,
             rate_node: RateNode,
