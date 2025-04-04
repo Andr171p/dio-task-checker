@@ -7,7 +7,7 @@ import pandas as pd
 from langchain_gigachat import GigaChat
 
 from src.models import Task
-from src.ai_agent.task_ai_agent import Agent
+from src.ai_agent import TaskAIAgent
 from src.task_assistant import TaskAssistant
 from src.ai_agent.nodes import RateNode, CommentsNode
 
@@ -28,7 +28,7 @@ rate_node = RateNode(model)
 
 comments_node = CommentsNode(model)
 
-agent = Agent(rate_node, comments_node)
+agent = TaskAIAgent(rate_node, comments_node)
 
 task_assistant = TaskAssistant(agent)
 
@@ -41,7 +41,6 @@ async def main() -> pd.DataFrame:
     for _, row in df.iterrows():
         try:
             task = Task(
-                partner=row["Контрагент"],
                 subdivision=row["Подразделение"],
                 description=row["Описание"] if row["Описание"] is not np.nan else "",
                 hours=row["Часы"]
