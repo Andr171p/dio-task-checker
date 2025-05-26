@@ -3,7 +3,6 @@ langchain-core~=0.3.49
 fastapi[all]~=0.115.12
 langchain~=0.3.21
 langchain-gigachat~=0.3.8
-langgraph~=0.3.21
 typing_extensions~=4.13.0
 pydantic~=2.11.1
 python-dotenv~=1.1.0
