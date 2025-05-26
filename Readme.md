@@ -2,7 +2,7 @@
 
 ## API
 
-> POST /api/v1/tasks
+> POST /api/v1/tasks/
 
 ### Тело запроса:
 ```json
