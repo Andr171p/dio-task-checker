@@ -45,6 +45,20 @@
 ```shell
 git clone https://github.com/Andr171p/dio-task-checker.git
 cd dio-task-checker
+```
+
+```shell
+nano .env
+```
+
+### Шаблон .env файла
+```.env
+# GigaChat creadentials:
+GIGACHAT_API_KEY = "API Token"
+GIGACHAT_SCOPE = ""
+```
+
+```shell
 docker-compose up -d
 ```
 
