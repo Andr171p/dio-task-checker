@@ -1,14 +1,14 @@
 from dishka import Provider, provide, Scope, from_context, make_async_container
 
+from langchain_core.runnables import Runnable
 from langchain_core.language_models import BaseChatModel
 
 from langchain_gigachat import GigaChat
 
-from langgraph.graph.graph import CompiledGraph
-
+from .agent import create_structured_output_llm_chain
+from .schemas import CheckedTask
+from .prompts import TEMPLATE
 from .settings import GigaChatSettings
-from .ai_agent.nodes import CommentNode, EvaluateNode
-from .ai_agent.workflow import create_task_checker_agent
 
 
 class AppProvider(Provider):
@@ -24,16 +24,12 @@ class AppProvider(Provider):
         )
 
     @provide(scope=Scope.APP)
-    def get_comment_node(self, model: BaseChatModel) -> CommentNode:
-        return CommentNode(model)
-
-    @provide(scope=Scope.APP)
-    def get_rate_node(self, model: BaseChatModel) -> EvaluateNode:
-        return EvaluateNode(model)
-
-    @provide(scope=Scope.APP)
-    def get_agent(self, comment: CommentNode, evaluate: EvaluateNode) -> CompiledGraph:
-        return create_task_checker_agent(comment, evaluate)
+    def get_agent(self, model: BaseChatModel) -> Runnable:
+        return create_structured_output_llm_chain(
+            schema=CheckedTask,
+            template=TEMPLATE,
+            model=model
+        )
 
 
 settings = GigaChatSettings()

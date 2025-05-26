@@ -5,15 +5,7 @@ from pydantic import BaseModel
 from langchain_core.runnables import Runnable
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.language_models import BaseChatModel
-from langchain_core.output_parsers import StrOutputParser, PydanticOutputParser
-
-
-def create_llm_chain(template: str, model: BaseChatModel) -> Runnable:
-    return (
-        ChatPromptTemplate.from_template(template)
-        | model
-        | StrOutputParser()
-    )
+from langchain_core.output_parsers import PydanticOutputParser
 
 
 def create_structured_output_llm_chain(
@@ -25,7 +17,7 @@ def create_structured_output_llm_chain(
     return (
         ChatPromptTemplate
         .from_messages([("system", template)])
-        .partial(format_intructions=parser.get_format_instructions())
+        .partial(format_instructions=parser.get_format_instructions())
         | model
         | parser
     )

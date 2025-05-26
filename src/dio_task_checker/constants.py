@@ -1,0 +1,4 @@
+
+
+MIN_RATE = 1
+MAX_RATE = 10

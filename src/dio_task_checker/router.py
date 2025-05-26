@@ -2,7 +2,7 @@ from fastapi import APIRouter, status
 
 from dishka.integrations.fastapi import FromDishka, DishkaRoute
 
-from langgraph.graph.graph import CompiledGraph
+from langchain_core.runnables import Runnable
 
 from .schemas import Task, CheckedTask
 
@@ -19,6 +19,12 @@ tasks_router = APIRouter(
     status_code=status.HTTP_200_OK,
     response_model=CheckedTask
 )
-async def check_task(task: Task, agent: FromDishka[CompiledGraph]) -> CheckedTask:
-    response = await agent.ainvoke({"task": task})
-    return CheckedTask.model_validate(response)
+async def check_task(task: Task, agent: FromDishka[Runnable]) -> CheckedTask:
+    checked_task = await agent.ainvoke({
+        "subdivision": task.subdivision,
+        "theme": task.theme,
+        "description": task.description,
+        "hours": task.hours,
+        "jobs": task.jobs
+    })
+    return checked_task
