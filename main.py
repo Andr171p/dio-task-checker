@@ -1,8 +1,8 @@
 import logging
 
-from src.api.app import get_litestar_app
+from src.dio_task_checker.app import create_fastapi_app
 
 
 logging.basicConfig(level=logging.INFO)
 
-app = get_litestar_app()
+app = create_fastapi_app()

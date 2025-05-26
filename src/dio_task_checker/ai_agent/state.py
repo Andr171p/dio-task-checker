@@ -1,9 +1,9 @@
 from typing_extensions import TypedDict
 
-from src.models import Task
+from src.dio_task_checker.schemas import Task
 
 
-class State(TypedDict):
+class AgentState(TypedDict):
     task: Task
     rate: int
     comments: str

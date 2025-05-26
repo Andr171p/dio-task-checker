@@ -6,12 +6,12 @@ import pandas as pd
 
 from langchain_gigachat import GigaChat
 
-from src.models import Task
+from src.dio_task_checker.schemas import Task
 from src.ai_agent import TaskAIAgent
-from src.task_assistant import TaskAssistant
+from src.task_checker import TaskAssistant
 from src.ai_agent.nodes import RateNode, CommentsNode
 
-from src.settings import settings
+from src.dio_task_checker.settings import settings
 
 
 logging.basicConfig(level=logging.INFO)

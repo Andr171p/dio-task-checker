@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 
 from pydantic import BaseModel, field_validator
 
@@ -17,10 +17,10 @@ class Task(BaseModel):
     theme: str
     description: Optional[str]
     hours: float
-    jobs: Optional[List[Job]]
+    jobs: Optional[list[Job]]
 
     @field_validator("jobs")
-    def validate_jobs(cls, jobs: List[Job]) -> str:
+    def format_jobs_to_text(cls, jobs: list[Job]) -> str:
         return "\n".join([job.to_text() for job in jobs])
 
 

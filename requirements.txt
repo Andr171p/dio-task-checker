@@ -1,12 +1,10 @@
 dishka~=1.5.2
 langchain-core~=0.3.49
-litestar~=2.15.1
+fastapi[all]~=0.115.12
 langchain~=0.3.21
 langgraph~=0.3.21
 typing_extensions~=4.13.0
 pydantic~=2.11.1
 python-dotenv~=1.1.0
 pydantic-settings~=2.8.1
-numpy~=2.2.4
-pandas~=2.2.3
 uvicorn~=0.34.0
