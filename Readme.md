@@ -44,7 +44,7 @@
 
 ```shell
 git clone https://github.com/Andr171p/dio-task-checker.git
-cd dio-tasks-checker
+cd dio-task-checker
 docker-compose up -d
 ```
 
