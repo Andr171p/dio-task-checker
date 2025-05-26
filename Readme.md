@@ -43,7 +43,7 @@
 ## Запуск
 
 ```shell
-git clone https://github.com/Andr171p/dio-tasks-checker.git
+git clone https://github.com/Andr171p/dio-task-checker.git
 cd dio-tasks-checker
 docker-compose up -d
 ```
