@@ -7,7 +7,7 @@ from langchain_gigachat import GigaChat
 from langgraph.graph.graph import CompiledGraph
 
 from .settings import GigaChatSettings
-from .ai_agent.nodes import CommentNode, RateNode
+from .ai_agent.nodes import CommentNode, EvaluateNode
 from .ai_agent.workflow import create_task_checker_agent
 
 
@@ -28,12 +28,12 @@ class AppProvider(Provider):
         return CommentNode(model)
 
     @provide(scope=Scope.APP)
-    def get_rate_node(self, model: BaseChatModel) -> RateNode:
-        return RateNode(model)
+    def get_rate_node(self, model: BaseChatModel) -> EvaluateNode:
+        return EvaluateNode(model)
 
     @provide(scope=Scope.APP)
-    def get_agent(self, comment: CommentNode, rate: RateNode) -> CompiledGraph:
-        return create_task_checker_agent(comment, rate)
+    def get_agent(self, comment: CommentNode, evaluate: EvaluateNode) -> CompiledGraph:
+        return create_task_checker_agent(comment, evaluate)
 
 
 settings = GigaChatSettings()

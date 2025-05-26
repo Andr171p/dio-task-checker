@@ -44,7 +44,7 @@ class TaskRate(BaseModel):
     )
 
 
-class RateNode(BaseNode):
+class EvaluateNode(BaseNode):
     def __init__(self, model: BaseChatModel) -> None:
         self.logger = logging.getLogger(self.__class__.__name__)
         self.llm_chain = create_structured_output_llm_chain(
@@ -54,7 +54,7 @@ class RateNode(BaseNode):
         )
 
     async def __call__(self, state: AgentState) -> dict[str, int]:
-        self.logger.info("---RATE---")
+        self.logger.info("---EVALUATE---")
         task = state["task"]
         task_rate: TaskRate = await self.llm_chain.ainvoke({
             "theme": task.theme,
