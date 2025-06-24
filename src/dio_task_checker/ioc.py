@@ -19,6 +19,7 @@ class AppProvider(Provider):
         return GigaChat(
             credentials=config.API_KEY,
             scope=config.SCOPE,
+            model="GigaChat-2",
             verify_ssl_certs=False,
             profanity_check=False
         )
