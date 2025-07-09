@@ -7,7 +7,7 @@ from langchain_gigachat import GigaChat
 
 from .agent import create_structured_output_llm_chain
 from .schemas import CheckedTask
-from .prompts import TEMPLATE
+from .prompts import PROMPT_TEMPLATE
 from .settings import GigaChatSettings
 
 
@@ -25,10 +25,10 @@ class AppProvider(Provider):
         )
 
     @provide(scope=Scope.APP)
-    def get_agent(self, model: BaseChatModel) -> Runnable:
+    def get_agent(self, model: BaseChatModel) -> Runnable[dict[str, str | int], CheckedTask]:
         return create_structured_output_llm_chain(
-            schema=CheckedTask,
-            template=TEMPLATE,
+            output_schema=CheckedTask,
+            prompt_template=PROMPT_TEMPLATE,
             model=model
         )
 

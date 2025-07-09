@@ -1,4 +1,4 @@
-from typing import Type
+from typing import TypeVar
 
 from pydantic import BaseModel
 
@@ -7,17 +7,18 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.language_models import BaseChatModel
 from langchain_core.output_parsers import PydanticOutputParser
 
+T = TypeVar("T", bound=BaseModel)
+
 
 def create_structured_output_llm_chain(
-        schema: Type[BaseModel],
-        template: str,
+        output_schema: type[T],
+        prompt_template: str,
         model: BaseChatModel
-) -> Runnable:
-    parser = PydanticOutputParser(pydantic_object=schema)
-    return (
+) -> Runnable[dict[str, str | int], T]:
+    parser = PydanticOutputParser(pydantic_object=output_schema)
+    prompt = (
         ChatPromptTemplate
-        .from_messages([("system", template)])
+        .from_messages([("system", prompt_template)])
         .partial(format_instructions=parser.get_format_instructions())
-        | model
-        | parser
     )
+    return prompt | model | parser

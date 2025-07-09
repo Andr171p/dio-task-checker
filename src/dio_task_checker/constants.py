@@ -1,4 +1,5 @@
 
-
 MIN_RATE = 1
 MAX_RATE = 10
+
+TTL = 3600

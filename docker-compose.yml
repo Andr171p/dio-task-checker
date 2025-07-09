@@ -1,8 +1,28 @@
 services:
+  memcached:
+    image: memcached:latest
+    container_name: memcached
+    ports:
+      - "11211:11211"
+    environment:
+      - MEMCACHED_CACHE_SIZE=64
+      - MEMCACHED_CONNECTIONS=1024
+      - MEMCACHED_THREADS=4
+    volumes:
+      - memcached_data:/tmp
+    restart: unless-stopped
+    networks:
+      - app_network
+
   app:
     build: .
+    depends_on:
+      - memcached
     ports:
       - "8801:8000"
     volumes:
       - ./:/app
     restart: unless-stopped
+
+volumes:
+  memcached_data:

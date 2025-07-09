@@ -1,10 +1,13 @@
 from fastapi import APIRouter, status
 
-from dishka.integrations.fastapi import FromDishka, DishkaRoute
+from fastapi_cache.decorator import cache
+
+from dishka.integrations.fastapi import DishkaRoute, FromDishka as Depends
 
 from langchain_core.runnables import Runnable
 
 from .schemas import Task, CheckedTask
+from .constants import TTL
 
 
 tasks_router = APIRouter(
@@ -19,7 +22,8 @@ tasks_router = APIRouter(
     status_code=status.HTTP_200_OK,
     response_model=CheckedTask
 )
-async def check_task(task: Task, agent: FromDishka[Runnable]) -> CheckedTask:
+@cache(expire=TTL)
+async def check_task(task: Task, agent: Depends[Runnable[dict[str, str | int], CheckedTask]]) -> CheckedTask:
     checked_task = await agent.ainvoke({
         "subdivision": task.subdivision,
         "theme": task.theme,

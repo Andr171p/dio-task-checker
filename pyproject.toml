@@ -5,11 +5,13 @@ description = "Add your description here"
 requires-python = ">=3.11"
 dependencies = [
     "dishka>=1.5.2",
+    "fastapi-cache2[memcache]>=0.2.2",
     "fastapi[all]>=0.115.12",
     "langchain>=0.3.21",
     "langchain-gigachat>=0.3.8",
     "langgraph>=0.3.21",
     "litestar>=2.15.1",
+    "memcache>=0.12.0",
     "pandas>=2.2.3",
     "pydantic-settings>=2.8.1",
     "uvicorn>=0.34.0",
