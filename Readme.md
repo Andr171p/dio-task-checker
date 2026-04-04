@@ -53,9 +53,8 @@ nano .env
 
 ### Шаблон .env файла
 ```.env
-# GigaChat creadentials:
-GIGACHAT_API_KEY = "API Token"
-GIGACHAT_SCOPE = ""
+YANDEX_CLOUD_API_KEY=""
+YANDEX_CLOUD_FOLDER_ID=""
 ```
 
 ```shell
