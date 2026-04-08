@@ -23,6 +23,12 @@ services:
     volumes:
       - ./:/app
     restart: unless-stopped
+    networks:
+      - app_network
 
 volumes:
   memcached_data:
+
+networks:
+  app_network:
+    driver: bridge
