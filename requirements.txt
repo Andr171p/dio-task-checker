@@ -1,5 +1,6 @@
 langchain-core~=0.3.49
 fastapi[all]~=0.115.12
+fastapi-cache2[memcache]~=0.2.2
 langchain~=1.2.15
 langchain-openai~=1.1.12
 typing_extensions~=4.13.0
